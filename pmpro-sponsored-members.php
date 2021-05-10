@@ -620,6 +620,10 @@ function pmprosm_pmpro_confirmation_message( $message ) {
 			return $message;
 		}
 
+		if ( empty( $code ) ) {
+			return $message;
+		}
+
 		$pmpro_levels = pmpro_getAllLevels( false, true );
 
 		$code_urls = array();
@@ -1956,6 +1960,10 @@ function pmprosm_the_content_account_page( $content ) {
 				return $content;
 			}
 
+			if ( empty( $code ) ) {
+				return $content;
+			}
+
 			$code_urls = pmprosm_get_checkout_urls( $code );
 
 			ob_start();
@@ -2095,6 +2103,10 @@ function pmprosm_pmpro_email_body( $body, $pmpro_email ) {
 				$sponsored_level_ids = array($pmprosm_values['sponsored_level_id']);
 			} else {
 				$sponsored_level_ids = $pmprosm_values['sponsored_level_id'];
+			}
+
+			if ( ! $code ) {
+				return $body;
 			}
 
 			// No sponsored levels to use codes for.
